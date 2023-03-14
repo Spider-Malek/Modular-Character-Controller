@@ -1,23 +1,26 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Interactor : MonoBehaviour, IGetInput
+namespace Dynamic.Movement
 {
-    [SerializeField]
-    private Transform _cameraTransform;
-    [SerializeField]
-    private float _maxInteractionDistance;
-    [SerializeField]
-    private LayerMask _interactableLayer;
-
-    public void GetInput(InputAction.CallbackContext context)
+    public class Interactor : MonoBehaviour, IGetInput
     {
-        if (Physics.Raycast(_cameraTransform.position,_cameraTransform.forward,out RaycastHit raycastHit ,_maxInteractionDistance, _interactableLayer))
+        [SerializeField]
+        private Transform _cameraTransform;
+        [SerializeField]
+        private float _maxInteractionDistance;
+        [SerializeField]
+        private LayerMask _interactableLayer;
+
+        public void GetInput(InputAction.CallbackContext context)
         {
-            Debug.Log(raycastHit.collider.gameObject);
-            if (raycastHit.collider.TryGetComponent(out IInteractable interactable))
+            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out RaycastHit raycastHit, _maxInteractionDistance, _interactableLayer))
             {
-                interactable.Interact();
+                Debug.Log(raycastHit.collider.gameObject);
+                if (raycastHit.collider.TryGetComponent(out IInteractable interactable))
+                {
+                    interactable.Interact();
+                }
             }
         }
     }

@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class PlayerUtils
+namespace Dynamic.Movement
 {
-	public static void ActivateCursor()
+	public static class PlayerUtils
 	{
-		Cursor.lockState = CursorLockMode.None;
-		Cursor.visible = true;
-	}
+		public static void ActivateCursor()
+		{
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		}
 
-	public static void DeactivateCursor()
-	{
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
+		public static void DeactivateCursor()
+		{
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}
 	}
 }

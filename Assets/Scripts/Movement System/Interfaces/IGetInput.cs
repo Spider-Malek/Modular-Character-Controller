@@ -1,9 +1,9 @@
 ﻿using UnityEngine.InputSystem;
 
-public interface IGetInput
+namespace Dynamic.Movement
 {
-	public void GetInput(InputAction.CallbackContext context);
+	public interface IGetInput
+	{
+		public void GetInput(InputAction.CallbackContext context);
+	}
 }
-
-
-

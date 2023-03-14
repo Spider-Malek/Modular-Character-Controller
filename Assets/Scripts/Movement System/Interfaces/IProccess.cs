@@ -1,4 +1,7 @@
-﻿public interface IProccess
+﻿namespace Dynamic.Movement
 {
-	public void Process();
+	public interface IProccess
+	{
+		public void Process();
+	}
 }

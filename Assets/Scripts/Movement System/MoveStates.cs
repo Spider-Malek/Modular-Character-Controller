@@ -1,8 +1,11 @@
-public enum MoveStates
+namespace Dynamic.Movement
 {
-	Idle,
-	Walking,
-	Running,
-	Jumping,
-	Crouching,
+	public enum MoveStates
+	{
+		Idle,
+		Walking,
+		Running,
+		Jumping,
+		Crouching,
+	}
 }

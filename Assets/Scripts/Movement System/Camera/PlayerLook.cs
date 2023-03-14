@@ -1,24 +1,26 @@
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerLook : MonoBehaviour, IGetInput
+namespace Dynamic.Movement
 {
-    [SerializeField]
-    private Transform _head;
-    private float xRotation;
-
-    public void GetInput(InputAction.CallbackContext context)
+	public class PlayerLook : MonoBehaviour, IGetInput
 	{
-		Vector2 lookValue = context.ReadValue<Vector2>();
+		[SerializeField]
+		private Transform _head;
+		private float xRotation;
 
-		float xLook = lookValue.x * Time.deltaTime;
-		float yLook = lookValue.y * Time.deltaTime;
+		public void GetInput(InputAction.CallbackContext context)
+		{
+			Vector2 lookValue = context.ReadValue<Vector2>();
 
-		xRotation -= yLook;
-		xRotation = Mathf.Clamp(xRotation, -90, 90);
+			float xLook = lookValue.x * Time.deltaTime;
+			float yLook = lookValue.y * Time.deltaTime;
 
-		transform.Rotate(Vector3.up * xLook);
-		_head.localRotation = Quaternion.Euler(xRotation, 0, 0);
+			xRotation -= yLook;
+			xRotation = Mathf.Clamp(xRotation, -90, 90);
+
+			transform.Rotate(Vector3.up * xLook);
+			_head.localRotation = Quaternion.Euler(xRotation, 0, 0);
+		}
 	}
 }
